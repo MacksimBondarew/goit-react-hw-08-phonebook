@@ -6,7 +6,7 @@ import {
     AddContactButton,
     LabelName,
     LabelPhone,
-} from './NameEditor.styled';
+} from '../../style/NameEditor.styled';
 import PropTypes from 'prop-types';
 
 const NameEditor = ({ onSubmit, people }) => {

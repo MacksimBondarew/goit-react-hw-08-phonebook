@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { AddContactButton, LabelName, LabelPhone } from './NameEditor.styled';
+import { AddContactButton, LabelName, LabelPhone } from '../../style/NameEditor.styled';
 import styled from 'styled-components';
 import { object, string, number } from 'yup';
 import { nanoid } from 'nanoid';

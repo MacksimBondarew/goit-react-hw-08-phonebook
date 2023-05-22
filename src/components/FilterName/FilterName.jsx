@@ -4,7 +4,7 @@ import {
     FilterImput,
     FilterNameSpan,
     FilterImputIcon,
-} from './FilterName.styled';
+} from '../../style/FilterName.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilterContact } from '../../redux/filter';
 import { selectFilter } from '../../redux/selectors';

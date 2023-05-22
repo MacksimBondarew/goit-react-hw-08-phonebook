@@ -1,5 +1,5 @@
-import { ContactsList, ContactItem, Error } from './NameList.styled';
-import ContactName from '../ContactName/ContactName';
+import { ContactsList, ContactItem, Error } from '../../style/NameList.styled';
+import ContactName from '../../style/ContactName';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     selectContacts,

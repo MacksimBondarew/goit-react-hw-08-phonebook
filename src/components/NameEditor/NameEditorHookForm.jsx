@@ -11,7 +11,7 @@ import {
     Error,
     ErroText,
     ErrorIcon,
-} from './NameEditor.styled';
+} from '../../style/NameEditor.styled';
 import { selectContacts } from '../../redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/operations'

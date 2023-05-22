@@ -3,7 +3,7 @@ import {
     ContactNameSpan,
     ContactNumberSpan,
     RemoveContact,
-} from '../NameList/NameList.styled';
+} from './NameList.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 

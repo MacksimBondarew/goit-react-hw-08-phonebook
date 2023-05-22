@@ -1,18 +1,23 @@
-import NameEditor from './NameEditor';
-import NameList from './NameList';
-import FilterName from './FilterName';
-import { PhoneBook, TitleContacts, MainTitlePhoneBook } from './App.styled';
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './SharedLayout/SharedLayout';
+import { lazy } from 'react';
+const Contacts = lazy(() => import('../components/Contacts/Contacts'));
+const Login = lazy(() => import('../components/LoginForm/LoginForm'));
+const Register = lazy(() => import('../components/RegisterForm/RegisterForm'));
+const Home = lazy(() => import('../pages/Home'));
 
 const App = () => {
     return (
-        <PhoneBook>
-            <MainTitlePhoneBook>Phonebook</MainTitlePhoneBook>
-            <NameEditor />
-
-            <TitleContacts>Contacts</TitleContacts>
-            <FilterName />
-            <NameList />
-        </PhoneBook>
+        <>
+            <Routes>
+                <Route path="/" element={<SharedLayout />}>
+                    <Route index element={<Home />} />
+                    <Route path='/contacts' element={<Contacts />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />}></Route>
+                </Route>
+            </Routes>
+        </>
     );
 };
 
