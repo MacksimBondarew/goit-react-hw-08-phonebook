@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 import { lazy } from 'react';
-const Contacts = lazy(() => import('../components/Contacts/Contacts'));
-const Login = lazy(() => import('../components/LoginForm/LoginForm'));
-const Register = lazy(() => import('../components/RegisterForm/RegisterForm'));
+const Contacts = lazy(() => import('./Contacts/Contacts'));
+const Login = lazy(() => import('./LoginForm/LoginForm'));
+const Register = lazy(() => import('./RegisterForm/RegisterForm'));
 const Home = lazy(() => import('../pages/Home'));
 
 const App = () => {

@@ -1,9 +1,9 @@
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import {
     ContactNameSpan,
     ContactNumberSpan,
     RemoveContact,
-} from './NameList.styled';
+} from '../../style/NameList.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 

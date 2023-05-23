@@ -6,8 +6,8 @@ import {
     FilterImputIcon,
 } from '../../style/FilterName.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilterContact } from '../../redux/filter';
-import { selectFilter } from '../../redux/selectors';
+import { changeFilterContact } from '../../redux/contacts/filter';
+import { selectFilter } from '../../redux/contacts/selectors';
 
 const FilterName = () => {
     const dispatch = useDispatch();

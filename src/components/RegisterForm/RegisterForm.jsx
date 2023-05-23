@@ -9,19 +9,14 @@ import {
     ErrorIcon,
 } from '../../style/NameEditor.styled';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operations';
+// import { addContact } from '../../redux/contacts/operations';
+import { registerUser } from 'redux/auth/operations';
 
 const schema = object({
     email: string()
         .matches(
             /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
             "Email may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        )
-        .required(),
-        password: string()
-        .matches(
-            /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-            'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +, 5 min numbers'
         )
         .required(),
         name: string()
@@ -47,19 +42,19 @@ export default function LoginForm() {
         resolver: yupResolver(schema),
     });
     const dispatch = useDispatch();
-    const registeUser = (email, password, name) => {
+    const deliveryDataUser = (email, password, name) => {
         const contact = {
             id: nanoid(),
             email,
             name,
             password,
         };
-        dispatch(addContact(contact));
+        dispatch(registerUser(contact));
     };
 
     const deliveryData = data => {
         const { email, name, password } = data;
-        registeUser(email, name, password);
+        deliveryDataUser(email, name, password);
         reset();
     };
     return (

@@ -1,14 +1,14 @@
 import { ContactsList, ContactItem, Error } from '../../style/NameList.styled';
-import ContactName from '../../style/ContactName';
+import ContactName from '../ContactName/ContactName';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     selectContacts,
     selectFilter,
     selectLoading,
     selectError,
-} from '../../redux/selectors';
+} from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
-import { featchContacts } from '../../redux/operations';
+import { featchContacts } from '../../redux/contacts/operations';
 import { DotLoader } from 'react-spinners';
 
 const NameList = () => {

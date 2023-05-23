@@ -12,9 +12,9 @@ import {
     ErroText,
     ErrorIcon,
 } from '../../style/NameEditor.styled';
-import { selectContacts } from '../../redux/selectors';
+import { selectContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/operations'
+import { addContact } from '../../redux/contacts/operations'
 
 const schema = object({
     name: string()
