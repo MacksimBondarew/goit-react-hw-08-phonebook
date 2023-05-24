@@ -95,7 +95,7 @@ export default function LoginForm() {
                     <ErroText>{errors.password.message}</ErroText>
                 </Error>
             )}
-            <button type="submit">add Contact</button>
+            <button type="submit">Register</button>
         </form>
     );
 }

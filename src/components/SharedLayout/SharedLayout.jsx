@@ -7,7 +7,11 @@ import {
     Authorization,
     Link,
 } from '../../style/SharedLayout.styled';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import UserMenu from 'components/UserMenu/UserMenu';
+import { useSelector } from 'react-redux';
 export default function SharedLayout() {
+    const isLoggenIn =useSelector(selectIsLoggedIn); 
     return (
         <>
             <Header>
@@ -16,8 +20,14 @@ export default function SharedLayout() {
                     <Link to="/contacts">Contacts</Link>
                 </Nav>
                 <Authorization>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+                    {isLoggenIn ? (
+                        <UserMenu />
+                    ) : (
+                        <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </>
+                    )}
                 </Authorization>
             </Header>
             <Suspense
