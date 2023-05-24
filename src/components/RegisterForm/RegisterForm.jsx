@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,19 +9,19 @@ import {
 } from '../../style/NameEditor.styled';
 import { useDispatch } from 'react-redux';
 // import { addContact } from '../../redux/contacts/operations';
-import { registerUser } from 'redux/auth/operations';
+import { registerUser } from '../../redux/auth/operations';
 
 const schema = object({
+    name: string()
+    .matches(
+        /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+        "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+    )
+    .required(),
     email: string()
         .matches(
             /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
             "Email may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        )
-        .required(),
-        name: string()
-        .matches(
-            /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-            "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         )
         .required(),
 }).required();
@@ -35,21 +34,19 @@ export default function LoginForm() {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            email: '',
             name: "",
+            email: '',
             password: '',
         },
         resolver: yupResolver(schema),
     });
     const dispatch = useDispatch();
-    const deliveryDataUser = (email, password, name) => {
-        const contact = {
-            id: nanoid(),
-            email,
+    const deliveryDataUser = (email, name, password) => {
+        dispatch(registerUser({
             name,
+            email,
             password,
-        };
-        dispatch(registerUser(contact));
+        }));
     };
 
     const deliveryData = data => {
@@ -59,19 +56,6 @@ export default function LoginForm() {
     };
     return (
         <form onSubmit={handleSubmit(deliveryData)}>
-            <label htmlFor="email">email:</label>
-            <input
-                type="text"
-                name="email"
-                {...register('email')}
-                aria-invalid={errors.email ? 'true' : 'false'}
-            />
-            {errors.email && (
-                <Error>
-                    <ErrorIcon>⚠️</ErrorIcon>
-                    <ErroText>{errors.email.message}</ErroText>
-                </Error>
-            )}
             <label htmlFor="name">Name:</label>
             <input
                 type="text"
@@ -83,6 +67,19 @@ export default function LoginForm() {
                 <Error>
                     <ErrorIcon>⚠️</ErrorIcon>
                     <ErroText>{errors.name.message}</ErroText>
+                </Error>
+            )}
+            <label htmlFor="email">email:</label>
+            <input
+                type="text"
+                name="email"
+                {...register('email')}
+                aria-invalid={errors.email ? 'true' : 'false'}
+            />
+            {errors.email && (
+                <Error>
+                    <ErrorIcon>⚠️</ErrorIcon>
+                    <ErroText>{errors.email.message}</ErroText>
                 </Error>
             )}
             <label htmlFor="password">password:</label>
