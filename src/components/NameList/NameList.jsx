@@ -22,7 +22,7 @@ const NameList = () => {
     const loading = useSelector(selectLoading);
 
     const getVisibleName = () => {
-        const normalizedName = filter.trim().toLowerCase();
+        const normalizedName = filter.toLowerCase();
         const filterContacts = contacts.filter(contact =>
             contact.name.toLowerCase().includes(normalizedName)
         );

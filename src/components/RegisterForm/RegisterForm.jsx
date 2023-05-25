@@ -10,6 +10,8 @@ import {
 import { useDispatch } from 'react-redux';
 // import { addContact } from '../../redux/contacts/operations';
 import { registerUser } from '../../redux/auth/operations';
+import { Link } from 'react-router-dom';
+import { Input } from '@chakra-ui/react'
 
 const schema = object({
     name: string()
@@ -70,11 +72,13 @@ export default function LoginForm() {
                 </Error>
             )}
             <label htmlFor="email">email:</label>
-            <input
+            <Input
                 type="text"
                 name="email"
                 {...register('email')}
                 aria-invalid={errors.email ? 'true' : 'false'}
+                size='lg'
+                backgroundColor='whiteAlpha.900'
             />
             {errors.email && (
                 <Error>
@@ -95,6 +99,7 @@ export default function LoginForm() {
                     <ErroText>{errors.password.message}</ErroText>
                 </Error>
             )}
+            <Link to='/authorisation/login'>Login</Link>
             <button type="submit">Register</button>
         </form>
     );

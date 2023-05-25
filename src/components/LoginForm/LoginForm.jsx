@@ -7,6 +7,7 @@ import {
 } from '../../style/NameEditor.styled';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/operations';
+import { Link } from 'react-router-dom';
 
 export default function LoginForm() {
     const {
@@ -62,6 +63,7 @@ export default function LoginForm() {
                     <ErroText>{errors.password.message}</ErroText>
                 </Error>
             )}
+            <Link to='/authorisation'>register</Link>
             <button type="submit">Authorisation</button>
         </form>
     );

@@ -1,8 +1,8 @@
 import React from 'react';
-import NameEditor from '../NameEditor';
-import NameList from '../NameList';
-import FilterName from '../FilterName';
-import { PhoneBook, TitleContacts, MainTitlePhoneBook } from '../../style/App.styled';
+import NameEditor from '../components/AddContactForm';
+import NameList from '../components/NameList';
+import FilterName from '../components/FilterName';
+import { PhoneBook, TitleContacts, MainTitlePhoneBook } from '../style/App.styled';
 
 export default function Contacts() {
     return (
