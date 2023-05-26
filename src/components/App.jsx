@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { DotLoader } from 'react-spinners';
+import RestrictRoute from './RestrictRoute';
+import PrivateRoute from './PrivateRoute';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Contacts = lazy(() => import('../pages/Contacts'));
 const Login = lazy(() => import('./LoginForm/LoginForm'));
 const Register = lazy(() => import('./RegisterForm/RegisterForm'));
@@ -33,14 +37,41 @@ const App = () => {
                     size={70}
                 />
             ) : (
-                <Routes>
-                    <Route path="/" element={<SharedLayout />}>
-                        <Route index element={<Home />} />
-                        <Route path="/contacts" element={<Contacts />} />
-                        <Route path='/authorisation' element={<Register />} />
-                        <Route path="/authorisation/login" element={<Login />} />
-                    </Route>
-                </Routes>
+                <>
+                    <Routes>
+                        <Route path="/" element={<SharedLayout />}>
+                            <Route index element={<Home />} />
+                            <Route
+                                path="/contacts"
+                                element={
+                                    <PrivateRoute
+                                        redirectTo="/authorisation"
+                                        component={<Contacts />}
+                                    />
+                                }
+                            />
+                            <Route
+                                path="/authorisation"
+                                element={
+                                    <RestrictRoute
+                                        redirectTo="/contacts"
+                                        component={<Register />}
+                                    />
+                                }
+                            />
+                            <Route
+                                path="/authorisation/login"
+                                element={
+                                    <RestrictRoute
+                                        redirectTo="/contacts"
+                                        component={<Login />}
+                                    />
+                                }
+                            />
+                        </Route>
+                    </Routes>
+                    <ToastContainer style={{minWidth: "280px"}} />
+                </>
             )}
         </>
     );

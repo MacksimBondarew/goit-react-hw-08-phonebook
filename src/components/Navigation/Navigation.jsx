@@ -10,7 +10,7 @@ export default function Navigation() {
         <>
             <Nav>
                 <Link to="/">Home</Link>
-                <Link to="/contacts">Contacts</Link>
+                {isLoggenIn && <Link to="/contacts">Contacts</Link>}
             </Nav>
             <Authorization>
                 {isLoggenIn ? (

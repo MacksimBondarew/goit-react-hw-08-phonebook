@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import { contactsReducer } from './contacts/contacts';
 import { filterReducer } from './contacts/filter';
-import { authReducer } from './auth/slice';
+import { authReducer } from './auth/auth';
 import {
     FLUSH,
     REHYDRATE,

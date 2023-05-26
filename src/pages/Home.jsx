@@ -14,7 +14,7 @@ export default function Home() {
                     contacts with ease!"
                 </Title>
                 <>
-                    <Link to={isLoggenIn ? "/home" : '/register'}>
+                    <Link to={isLoggenIn ? "/contacts" : '/authorisation'}>
                         <Button type="button">Get started</Button>
                     </Link>
                 </>

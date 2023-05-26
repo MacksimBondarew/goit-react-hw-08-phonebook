@@ -8,19 +8,17 @@ import {
     AddContactButton,
     LabelName,
     LabelPhone,
-    Error,
-    ErroText,
-    ErrorIcon,
 } from '../../style/NameEditor.styled';
 import { selectContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contacts/operations'
+import { addContact } from '../../redux/contacts/operations';
+import { toast } from 'react-toastify';
 
 const schema = object({
     name: string()
         .matches(
             /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-            "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            'Name may contain only letters, apostrophe, dash and spaces'
         )
         .required(),
     number: string()
@@ -77,32 +75,26 @@ const NameEditorHookForm = () => {
 
     return (
         <FormFormik onSubmit={handleSubmit(deliveryData)}>
-            <LabelName htmlFor="name">Name:</LabelName>
+            <LabelName htmlFor="name">Name</LabelName>
             <Input
                 type="text"
                 name="name"
                 {...register('name')}
                 aria-invalid={errors.name ? 'true' : 'false'}
             />
-            {errors.name && (
-                <Error>
-                    <ErrorIcon>⚠️</ErrorIcon>
-                    <ErroText>{errors.name.message}</ErroText>
-                </Error>
-            )}
-            <LabelPhone htmlFor="number">Phone Number:</LabelPhone>
+            {errors.name &&
+                errors.name &&
+                toast.error(`${errors.name.message}`)}
+            <LabelPhone htmlFor="number">Phone Number</LabelPhone>
             <Input
                 type="tel"
                 name="number"
                 {...register('number')}
                 aria-invalid={errors.number ? 'true' : 'false'}
             />
-            {errors.number && (
-                <Error>
-                    <ErrorIcon>⚠️</ErrorIcon>
-                    <ErroText>{errors.number.message}</ErroText>
-                </Error>
-            )}
+            {errors.number &&
+                errors.number &&
+                toast.error(`${errors.number.message}`)}
 
             <AddContactButton type="submit">add Contact</AddContactButton>
         </FormFormik>
