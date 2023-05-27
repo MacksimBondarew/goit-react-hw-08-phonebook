@@ -38,6 +38,7 @@ const App = () => {
                 />
             ) : (
                 <>
+                    <ToastContainer style={{minWidth: "280px"}} />
                     <Routes>
                         <Route path="/" element={<SharedLayout />}>
                             <Route index element={<Home />} />
@@ -70,7 +71,6 @@ const App = () => {
                             />
                         </Route>
                     </Routes>
-                    <ToastContainer style={{minWidth: "280px"}} />
                 </>
             )}
         </>

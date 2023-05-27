@@ -8,11 +8,12 @@ import {
     AddContactButton,
     LabelName,
     LabelPhone,
-} from '../../style/NameEditor.styled';
+} from '../../style/AddContact';
 import { selectContacts } from '../../redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 const schema = object({
     name: string()
@@ -29,7 +30,7 @@ const schema = object({
         .required(),
 }).required();
 
-const NameEditorHookForm = () => {
+const AddContact = () => {
     const {
         register,
         handleSubmit,
@@ -42,6 +43,16 @@ const NameEditorHookForm = () => {
         },
         resolver: yupResolver(schema),
     });
+
+    useEffect(() => {
+        if (errors?.name) {
+            toast.error(`${(errors.name.message)}`);
+        }
+        if (errors?.number) {
+            toast.error(`${errors.number.message}`);
+        }
+    }, [errors]);
+
     const people = useSelector(selectContacts);
     const dispatch = useDispatch();
     const addName = (name, number) => {
@@ -73,6 +84,8 @@ const NameEditorHookForm = () => {
         reset();
     };
 
+    
+
     return (
         <FormFormik onSubmit={handleSubmit(deliveryData)}>
             <LabelName htmlFor="name">Name</LabelName>
@@ -82,9 +95,6 @@ const NameEditorHookForm = () => {
                 {...register('name')}
                 aria-invalid={errors.name ? 'true' : 'false'}
             />
-            {errors.name &&
-                errors.name &&
-                toast.error(`${errors.name.message}`)}
             <LabelPhone htmlFor="number">Phone Number</LabelPhone>
             <Input
                 type="tel"
@@ -92,13 +102,10 @@ const NameEditorHookForm = () => {
                 {...register('number')}
                 aria-invalid={errors.number ? 'true' : 'false'}
             />
-            {errors.number &&
-                errors.number &&
-                toast.error(`${errors.number.message}`)}
 
             <AddContactButton type="submit">add Contact</AddContactButton>
         </FormFormik>
     );
 };
 
-export default NameEditorHookForm;
+export default AddContact;

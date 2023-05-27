@@ -6,6 +6,7 @@ import {
 } from '../../style/NameList.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Td, Th, Tr } from '@chakra-ui/react';
 
 const ContactName = ({ id, name, number }) => {
     const dispatch = useDispatch();
@@ -14,11 +15,11 @@ const ContactName = ({ id, name, number }) => {
     };
     return (
         <>
-            <ContactNameSpan>{name}</ContactNameSpan>
-            <ContactNumberSpan>{number}</ContactNumberSpan>
-            <RemoveContact type="button" onClick={() => deleteName(id)}>
+            <Th textAlign='center'>{name}</Th>
+            <Th textAlign='center'>{number}</Th>
+            <Th textAlign='center' type="button" onClick={() => deleteName(id)}>
                 Видалити
-            </RemoveContact>
+            </Th>
         </>
     );
 };

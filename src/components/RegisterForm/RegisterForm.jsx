@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,6 +13,7 @@ import {
     InputLeftElement,
     Text,
     Button,
+    InputRightElement,
 } from '@chakra-ui/react';
 import { Icon, EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { toast } from 'react-toastify';
@@ -23,6 +24,7 @@ const LinkForm = styled(Link)`
     margin-left: 5px;
     font-weight: 700;
 `;
+
 
 const schema = object({
     name: string()
@@ -42,7 +44,9 @@ const schema = object({
         .required(),
 }).required();
 
-export default function LoginForm() {
+export default function RegisterForm() {
+    const [show, setShow] = useState(false);
+    const handleClick = () => setShow(!show);
     const {
         register,
         handleSubmit,
@@ -116,7 +120,6 @@ export default function LoginForm() {
                                 placeholder="Enter name"
                             ></Input>
                             {errors.name &&
-                                errors.name &&
                                 toast.error(`${errors.name.message}`)}
                         </InputGroup>
                     </Box>
@@ -140,11 +143,11 @@ export default function LoginForm() {
                     </Box>
                     <Box>
                         <InputGroup>
-                            <InputLeftElement pointerEvents="none">
+                        <InputLeftElement pointerEvents="none">
                                 <LockIcon />
                             </InputLeftElement>
                             <Input
-                                type="password"
+                                type={show ? 'text' : 'password'}
                                 name="password"
                                 {...register('password')}
                                 aria-invalid={
@@ -154,6 +157,16 @@ export default function LoginForm() {
                                 mb="20px"
                                 placeholder="Enter password"
                             />
+                            <InputRightElement width="4.5rem">
+                                <Button
+                                    h="1.75rem"
+                                    size="sm"
+                                    onClick={handleClick}
+                                >
+                                    {show ? 'Hide' : 'Show'}
+                                </Button>
+                            </InputRightElement>
+
                             {errors.password &&
                                 errors.password &&
                                 toast.error(`${errors.password.message}`)}

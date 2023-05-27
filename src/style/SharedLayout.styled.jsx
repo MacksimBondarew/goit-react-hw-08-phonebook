@@ -5,8 +5,9 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     padding: 1rem;
-    background-color: #2c3e50;
+    background-color: #3EB489  ;
     color: white;
+    border-radius: 15px;
 `;
 
 export const Nav = styled.nav`
@@ -18,7 +19,7 @@ export const Nav = styled.nav`
 export const Link = styled(NavLink)`
     font-size: 1.2rem;
     text-decoration: none;
-    color: inherit;
+    color: white;
     opacity: 0.8;
     transition: opacity 0.2s ease-in-out;
     &:hover {

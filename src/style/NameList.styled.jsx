@@ -9,6 +9,7 @@ export const ContactsList = styled.ul`
 export const ContactItem = styled.li`
     display: flex;
     justify-content: space-between;
+    text-align: center;
     align-items: flex-start;
     padding: 10px;
     background-color: #f9f9f9;

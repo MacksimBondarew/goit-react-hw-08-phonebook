@@ -10,6 +10,7 @@ import {
 import { useEffect } from 'react';
 import { featchContacts } from '../../redux/contacts/operations';
 import { DotLoader } from 'react-spinners';
+import { Center, Table, Tr } from '@chakra-ui/react';
 
 const NameList = () => {
     const dispatch = useDispatch();
@@ -57,17 +58,17 @@ const NameList = () => {
                 </>
             ) : (
                 <>
-                    <ContactsList>
+                    <Table style={{textAlign: Center}}>
                         {getVisibleName().map(({ id, name, number }) => (
-                            <ContactItem key={id}>
+                            <Tr background='white' justifyContent='space-between' key={id}>
                                 <ContactName
                                     id={id}
                                     name={name}
                                     number={number}
                                 />
-                            </ContactItem>
+                            </Tr>
                         ))}
-                    </ContactsList>
+                    </Table>
                 </>
             )}
         </>
