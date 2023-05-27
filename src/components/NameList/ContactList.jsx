@@ -1,4 +1,3 @@
-import { ContactsList, ContactItem, Error } from '../../style/NameList.styled';
 import ContactName from '../ContactName/ContactName';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -10,9 +9,18 @@ import {
 import { useEffect } from 'react';
 import { featchContacts } from '../../redux/contacts/operations';
 import { DotLoader } from 'react-spinners';
-import { Center, Table, Tr } from '@chakra-ui/react';
+import { Table, Tbody, Tr } from '@chakra-ui/react';
+import styled from 'styled-components';
 
-const NameList = () => {
+const Error = styled.h1`
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #ff4d4f;
+    margin-top: 20px;
+`;
+
+const ContactList = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(featchContacts());
@@ -58,16 +66,22 @@ const NameList = () => {
                 </>
             ) : (
                 <>
-                    <Table style={{textAlign: Center}}>
-                        {getVisibleName().map(({ id, name, number }) => (
-                            <Tr background='white' justifyContent='space-between' key={id}>
-                                <ContactName
-                                    id={id}
-                                    name={name}
-                                    number={number}
-                                />
-                            </Tr>
-                        ))}
+                    <Table>
+                        <Tbody>
+                            {getVisibleName().map(({ id, name, number }) => (
+                                <Tr
+                                    background="white"
+                                    justifyContent="space-between"
+                                    key={id}
+                                >
+                                    <ContactName
+                                        id={id}
+                                        name={name}
+                                        number={number}
+                                    />
+                                </Tr>
+                            ))}
+                        </Tbody>
                     </Table>
                 </>
             )}
@@ -75,4 +89,4 @@ const NameList = () => {
     );
 };
 
-export default NameList;
+export default ContactList;

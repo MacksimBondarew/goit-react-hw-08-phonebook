@@ -1,18 +1,17 @@
 import React from 'react';
-import NameEditor from '../components/AddContactForm';
-import NameList from '../components/NameList';
-import FilterName from '../components/FilterName';
-import { PhoneBook, TitleContacts, MainTitlePhoneBook } from '../style/App.styled';
+import AddContact from '../components/AddContactForm';
+import styled from 'styled-components';
+import ContactList from 'components/NameList/ContactList';
+const PhoneBook = styled.div`
+    padding-top: 20px;
+    padding-bottom: 20px;
+`;
 
 export default function Contacts() {
     return (
         <PhoneBook>
-            <MainTitlePhoneBook>Phonebook</MainTitlePhoneBook>
-            <NameEditor />
-
-            <TitleContacts>Contacts</TitleContacts>
-            <FilterName />
-            <NameList />
+            <AddContact />
+            <ContactList />
         </PhoneBook>
     );
 }

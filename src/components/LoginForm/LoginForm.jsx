@@ -77,7 +77,7 @@ export default function LoginForm() {
                         Login
                     </Text>
                     <Box display="flex">
-                    <InputGroup>
+                        <InputGroup mb="20px">
                             <InputLeftElement pointerEvents="none">
                                 <EmailIcon />
                             </InputLeftElement>
@@ -87,26 +87,26 @@ export default function LoginForm() {
                                 {...register('email')}
                                 aria-invalid={errors.email ? 'true' : 'false'}
                                 size="md"
-                                mb="20px"
                                 placeholder="Enter email"
                             />
                         </InputGroup>
                     </Box>
                     <Box display="flex">
-                        <InputGroup>
-                        <InputLeftElement pointerEvents="none">
+                        <InputGroup mb="40px">
+                            <InputLeftElement pointerEvents="none">
                                 <LockIcon />
                             </InputLeftElement>
-                        <Input
-                            type={show ? 'text' : 'password'}
-                            name="password"
-                            {...register('password')}
-                            aria-invalid={errors.password ? 'true' : 'false'}
-                            size="md"
-                                mb="40px"
+                            <Input
+                                type={show ? 'text' : 'password'}
+                                name="password"
+                                {...register('password')}
+                                aria-invalid={
+                                    errors.password ? 'true' : 'false'
+                                }
+                                size="md"
                                 placeholder="Enter password"
-                        />
-                        <InputRightElement width="4.5rem">
+                            />
+                            <InputRightElement width="4.5rem">
                                 <Button
                                     h="1.75rem"
                                     size="sm"
@@ -118,7 +118,7 @@ export default function LoginForm() {
                         </InputGroup>
                     </Box>
                     <Text mb="30px" fontWeight="500" fontSize="15px">
-                    If you are not registered yet, please click on
+                        If you are not registered yet, please click on
                         {<LinkForm to="/authorisation">Registration</LinkForm>}
                     </Text>
                     <Button

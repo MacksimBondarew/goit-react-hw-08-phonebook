@@ -5,7 +5,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     padding: 1rem;
-    background-color: #3EB489  ;
+    background-color: #3eb489;
     color: white;
     border-radius: 15px;
 `;
@@ -32,7 +32,7 @@ export const Link = styled(NavLink)`
     }
 `;
 
-export const Authorization  = styled.div`
+export const Authorization = styled.div`
     margin-left: auto;
     ${Link}:first-child {
         margin-right: 1rem;

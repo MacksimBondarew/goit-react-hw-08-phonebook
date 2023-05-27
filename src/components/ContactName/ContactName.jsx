@@ -1,12 +1,6 @@
 import { deleteContact } from 'redux/contacts/operations';
-import {
-    ContactNameSpan,
-    ContactNumberSpan,
-    RemoveContact,
-} from '../../style/NameList.styled';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { Td, Th, Tr } from '@chakra-ui/react';
+import { Td } from '@chakra-ui/react';
 
 const ContactName = ({ id, name, number }) => {
     const dispatch = useDispatch();
@@ -15,18 +9,24 @@ const ContactName = ({ id, name, number }) => {
     };
     return (
         <>
-            <Th textAlign='center'>{name}</Th>
-            <Th textAlign='center'>{number}</Th>
-            <Th textAlign='center' type="button" onClick={() => deleteName(id)}>
-                Видалити
-            </Th>
+            <Td fontWeight='500' fontSize="16px" textAlign="center">
+                {name}
+            </Td>
+            <Td fontWeight='500' fontSize="15px" textAlign="center">
+                {number}
+            </Td>
+            <Td
+            fontWeight='500'
+                fontSize="15px"
+                color="red"
+                cursor="pointer"
+                textAlign="center"
+                onClick={() => deleteName(id)}
+            >
+                Delete
+            </Td>
         </>
     );
-};
-ContactName.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
 };
 
 export default ContactName;

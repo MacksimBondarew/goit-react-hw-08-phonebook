@@ -1,1 +1,1 @@
-export { default } from './AddContactrHookForm';
+export { default } from './AddContact';

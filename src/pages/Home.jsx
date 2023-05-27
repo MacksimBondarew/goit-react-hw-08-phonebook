@@ -13,7 +13,8 @@ export default function Home() {
             alignItems="center"
             height="500px"
         >
-            <Box                 width="sm"
+            <Box
+                width="sm"
                 height="ms"
                 pb="50px"
                 pr="50px"
@@ -21,14 +22,17 @@ export default function Home() {
                 bg="white"
                 paddingTop="30px"
                 borderRadius="20px"
-                textAlign="center">
-                <Text fontSize='2xl' mb='30px'>
+                textAlign="center"
+            >
+                <Text fontSize="2xl" mb="30px">
                     Digital Contact Archive: Store, find and organize your
                     contacts with ease!"
                 </Text>
                 <>
                     <Link to={isLoggenIn ? '/contacts' : '/authorisation'}>
-                        <Button colorScheme='teal' type="button">Get started</Button>
+                        <Button colorScheme="teal" type="button">
+                            Get started
+                        </Button>
                     </Link>
                 </>
             </Box>

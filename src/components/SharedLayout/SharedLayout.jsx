@@ -1,9 +1,7 @@
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { DotLoader } from 'react-spinners';
-import {
-    Header,
-} from '../../style/SharedLayout.styled';
+import { Header } from '../../style/SharedLayout.styled';
 import Navigation from 'components/Navigation/Navigation';
 export default function SharedLayout() {
     return (

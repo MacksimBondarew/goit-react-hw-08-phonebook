@@ -25,7 +25,6 @@ const LinkForm = styled(Link)`
     font-weight: 700;
 `;
 
-
 const schema = object({
     name: string()
         .matches(
@@ -103,75 +102,58 @@ export default function RegisterForm() {
                     >
                         Registration
                     </Text>
-                    <Box display="flex">
-                        <InputGroup>
-                            <InputLeftElement pointerEvents="none">
-                                <Icon viewBox="0 0 32 32">
-                                    <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
-                                </Icon>
-                            </InputLeftElement>
-                            <Input
-                                type="text"
-                                name="name"
-                                {...register('name')}
-                                aria-invalid={errors.name ? 'true' : 'false'}
-                                size="md"
-                                mb="20px"
-                                placeholder="Enter name"
-                            ></Input>
-                            {errors.name &&
-                                toast.error(`${errors.name.message}`)}
-                        </InputGroup>
-                    </Box>
-                    <Box display="flex">
-                        <InputGroup>
-                            <InputLeftElement pointerEvents="none">
-                                <EmailIcon />
-                            </InputLeftElement>
-                            <Input
-                                type="text"
-                                name="email"
-                                {...register('email')}
-                                aria-invalid={errors.email ? 'true' : 'false'}
-                                size="md"
-                                mb="20px"
-                                placeholder="Enter email"
-                            />
-                            {errors.email &&
-                                toast.error(`${errors.email.message}`)}
-                        </InputGroup>
-                    </Box>
-                    <Box>
-                        <InputGroup>
+                    <InputGroup mb="20px">
                         <InputLeftElement pointerEvents="none">
-                                <LockIcon />
-                            </InputLeftElement>
-                            <Input
-                                type={show ? 'text' : 'password'}
-                                name="password"
-                                {...register('password')}
-                                aria-invalid={
-                                    errors.password ? 'true' : 'false'
-                                }
-                                size="md"
-                                mb="20px"
-                                placeholder="Enter password"
-                            />
-                            <InputRightElement width="4.5rem">
-                                <Button
-                                    h="1.75rem"
-                                    size="sm"
-                                    onClick={handleClick}
-                                >
-                                    {show ? 'Hide' : 'Show'}
-                                </Button>
-                            </InputRightElement>
+                            <Icon viewBox="0 0 32 32">
+                                <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
+                            </Icon>
+                        </InputLeftElement>
+                        <Input
+                            type="text"
+                            name="name"
+                            {...register('name')}
+                            aria-invalid={errors.name ? 'true' : 'false'}
+                            size="md"
+                            placeholder="Enter name"
+                        ></Input>
+                        {errors.name && toast.error(`${errors.name.message}`)}
+                    </InputGroup>
+                    <InputGroup mb="20px">
+                        <InputLeftElement pointerEvents="none">
+                            <EmailIcon />
+                        </InputLeftElement>
+                        <Input
+                            type="text"
+                            name="email"
+                            {...register('email')}
+                            aria-invalid={errors.email ? 'true' : 'false'}
+                            size="md"
+                            placeholder="Enter email"
+                        />
+                        {errors.email && toast.error(`${errors.email.message}`)}
+                    </InputGroup>
+                    <InputGroup mb="20px">
+                        <InputLeftElement pointerEvents="none">
+                            <LockIcon />
+                        </InputLeftElement>
+                        <Input
+                            type={show ? 'text' : 'password'}
+                            name="password"
+                            {...register('password')}
+                            aria-invalid={errors.password ? 'true' : 'false'}
+                            size="md"
+                            placeholder="Enter password"
+                        />
+                        <InputRightElement width="4.5rem">
+                            <Button h="1.75rem" size="sm" onClick={handleClick}>
+                                {show ? 'Hide' : 'Show'}
+                            </Button>
+                        </InputRightElement>
 
-                            {errors.password &&
-                                errors.password &&
-                                toast.error(`${errors.password.message}`)}
-                        </InputGroup>
-                    </Box>
+                        {errors.password &&
+                            errors.password &&
+                            toast.error(`${errors.password.message}`)}
+                    </InputGroup>
                     <Text mb="10px" fontWeight="500" fontSize="15px">
                         If you are already registered, log in using your
                         {<LinkForm to="/authorisation/login">Login</LinkForm>}
