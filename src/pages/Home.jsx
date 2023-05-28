@@ -26,7 +26,7 @@ export default function Home() {
             >
                 <Text fontSize="2xl" mb="30px">
                     Digital Contact Archive: Store, find and organize your
-                    contacts with ease!"
+                    contacts with ease!
                 </Text>
                 <>
                     <Link to={isLoggenIn ? '/contacts' : '/authorisation'}>
